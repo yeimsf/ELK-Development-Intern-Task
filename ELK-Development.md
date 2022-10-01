@@ -196,7 +196,7 @@ sudo dpkg -i filebeat-8.4.2-amd64.deb
                 - /var/log/as.log
   ```
 
-- Logstash Test Without Filebeat:
+- Logstash Test Without Filebeat path */usr/share/logstash/test.conf*:
   ```
         input {
                 generator {
@@ -219,7 +219,7 @@ sudo dpkg -i filebeat-8.4.2-amd64.deb
         }
   ```
 
-- Filebeat-Logstash Conf File For Pipeline:
+- Filebeat-Logstash Conf File For Pipeline path */usr/share/logstash/test.conf*:
   ```
         input {
                 beats {

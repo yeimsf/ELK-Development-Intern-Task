@@ -1,0 +1,23 @@
+---
+- name: copy and install elasticsearch and kibana
+  hosts: elkhost
+  become: true
+  tasks:
+    - name: Copy ElasticSearch package to the node
+      copy:
+        src: files/elasticsearch-8.4.2-x86_64.rpm
+        dest: ~/elasticsearch-8.4.2-x86_64.rpm
+    - name: Copy Kibana package to the node
+      copy:
+        src: files/kibana-8.4.2-x86_64.rpm
+        dest: ~/kibana-8.4.2-x86_64.rpm
+    - name: Copy Logstash package to the node
+      copy:
+        src: files/logstash-8.4.2-x86_64.rpm
+        dest: ~/logstash-8.4.2-x86_64.rpm
+    - name: install both packages
+      shell: 'rpm -i ~/elasticsearch-8.4.2-x86_64.rpm; rpm -i ~/kibana-8.4.2-x86_64.rpm; rpm -i ~/logstash-8.4.2-x86_64.rpm'
+      register: res
+    - name: Display Results
+      debug:
+        var: res

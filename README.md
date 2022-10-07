@@ -177,3 +177,25 @@ sudo dpkg -i filebeat-8.4.2-amd64.deb
    1. ![as.log](./screenshots/Screenshot%20from%202022-10-01%2012-12-54.png)
 
 > All predefined patterns are here in this path: /usr/share/logstash/vendor/bundle/jruby/2.6.0/gems/logstash-patterns-core-4.3.4/patterns/legacy
+
+## Grafana
+
+### Installation
+
+```bash
+wget https://dl.grafana.com/enterprise/release/grafana-enterprise-9.1.7-1.x86_64.rpm
+sudo yum install grafana-enterprise-9.1.7-1.x86_64.rpm
+```
+
+### Configuration
+
+- Go to `http://<Node_IP_Address>:3000/`
+- enter default username and password 'admin','admin'
+- reset the password
+- Go to Configuration -> Data sources -> search for elasticsearch:
+  - Provide the url to elasticsearch
+  - basic auth on with username = elastic and password = `<elastic_superuser_password>`
+  - Skip TLS Verify
+  - Add the index name to visualize
+- Save & Test
+- Now elasticsearch is configured on grafana, all documents under the index you provided will be accessable in grafana

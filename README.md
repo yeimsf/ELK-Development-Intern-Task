@@ -189,6 +189,8 @@ sudo yum install grafana-enterprise-9.1.7-1.x86_64.rpm
 
 ### Configuration
 
+- Add firewall permissions on port 3000:
+  - `firewall-cmd --zone=public --add-port=3000/tcp --permanent`
 - Go to `http://<Node_IP_Address>:3000/`
 - enter default username and password 'admin','admin'
 - reset the password
